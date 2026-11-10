@@ -1,0 +1,93 @@
+Terraform:
+It helps to automate and manage infrastructure on the platform and services that run on that platform
+it is open source and decalrative (define WHAT end result you want)
+
+Tool for infrastructure provisioning?
+-> Create infrastructure
+eg: Setup the microservcies as a docker continer to setup servers in the infrastructure Setup
+-> Prepare infratsructure
+eg: If the infra is ti be built on AWS, we must create a following
+1.) Select a region
+2.) Create a private network space
+3.) Create EC2 instances
+4.) install Docker and other tools
+5.) Security
+-> Deploy Application
+
+Steps in setting up infrastructure
+1.) Provisioning infrastructure -> Teraform
+-> Create VPC
+-> Spin up servers
+-> Create users and permissions
+-> Install docker on servers
+
+2.) Deploying applications
+
+Difference between Ansible and Teraform
+They almost do the same thing
+They are infrastrictyure as a code
+
+Ansible:
+-> mainly a configuration tool
+-> deploy tools
+-> Install and update s/w
+-> More mature
+-> better for configuring infra
+
+Terraform:
+-> Mainly a infratructure provisioning tools
+-> Can deploy apps
+-> Relatively new
+-> More advanced in orchestration
+-> better for infrastrictyure provisioning
+
+Managing existing infrstaructure:
+-> Create infratstructure
+-> Changes to infratructure (add/remove)
+Terraform helps in replicating anexisting setup as a new env
+
+How does terraform:
+-> How does it connect to cloud provider
+
+
+Terraform architecture
+-> 2 input sources
+tf-config
+tf-state
+-> Core takes the input and creates a plan
+(Whats needs to be updated/ created / destroyed)
+Based on current state, if figures out what needs to be done to reach the desired state
+
+-> Providers
+a.) Cloud Providers
+b.) Kubernetes
+c.) Docker
+d.) fastly
+
+
+Example conf files:
+
+# Configure the AWS Provider
+provider "aws" {
+    version = "~> 2.0"
+    region = "us-east-1"
+}
+
+# Create a VPC
+resource "aws_vpc" "example" {
+    cidr_block = "10.0.0.0/16"
+}
+
+# Configure the Kubernetes Provider
+provider "Kubernetes" {
+    config_context_auth_info = "ops"
+    config_context_cluster = "my-cluster"
+}
+
+resource "kubernetes_namespace" "example"{
+    metadata {
+        name = "my-first-namespace"
+    }
+}
+
+
