@@ -65,7 +65,8 @@ c.) Docker
 d.) fastly
 
 
-Example conf files:
+Example conf files: Define resource and its attributes
+
 
 # Configure the AWS Provider
 provider "aws" {
@@ -90,4 +91,23 @@ resource "kubernetes_namespace" "example"{
     }
 }
 
+
+decalrative vs Imperative:
+
+decalrative: Explain desired state
+Define the end state in your config files
+eg: 5 servers with following network file
+AWS user with following permissions
+
+impoerative: give instructions
+it is a benefit while updating infratructure
+eg: remove 2 servers
+add firewall config
+
+Terraform commands
+There are many commands for different stages
+1.) Refresh: Query infratructire provider to get current state
+2.) Plan: Create an executable plan
+3.) Apply: Execute the plan
+4.) Destroy the infratructure
 
